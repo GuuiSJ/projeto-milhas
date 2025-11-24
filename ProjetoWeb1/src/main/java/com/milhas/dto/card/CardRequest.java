@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public record CardRequest(
-    @NotBlank(message = "O nome personalizado do cartão é obrigatório")
+    @NotBlank(message = "O nome do cartão é obrigatório")
     String nomePersonalizado,
 
     @NotBlank(message = "Os últimos 4 dígitos são obrigatórios")
