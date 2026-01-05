@@ -80,8 +80,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         if (!dto.novaSenha().equals(dto.confirmacaoSenha())) {
             throw new InvalidPasswordException("As senhas não conferem.");
         }
-        UsuarioEntity usuario = usuarioRepository.findByResetPasswordToken(dto.token())
-                .orElseThrow(() -> new InvalidTokenException("Token inválido ou não encontrado."));
+        UsuarioEntity usuario = usuarioRepository.findByResetPasswordToken(dto.token()).orElseThrow(() -> new InvalidTokenException("Token inválido ou não encontrado."));
 
         if (usuario.getResetPasswordTokenExpiry().isBefore(LocalDateTime.now())) {
             throw new InvalidTokenException("Token expirado.");
